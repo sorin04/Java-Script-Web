@@ -1,0 +1,165 @@
+/* L'interrupteur - la boîte autour du curseur */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 2em;
+    margin: 10px;
+}
+
+/* Masquer la case à cocher HTML par défaut */
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Le curseur */
+.toggle-switch .slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #9fccfa;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggle-switch .slider:before {
+    position: absolute;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2em;
+    width: 2em;
+    inset: 0;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggle-switch input:checked + .slider {
+    background: #09f120;
+}
+
+.toggle-switch input:focus + .slider {
+    box-shadow: 0 0 1px #090df1;
+}
+
+.toggle-switch input:checked + .slider:before {
+    transform: translateX(1.6em);
+}
+
+/* Croissant de lune */
+.toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: white;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+
+
+/*Dark mode*/
+.theme-switch {
+    display: flex;
+    position: fixed;
+    right:10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 9em;
+    height: 2.5em;
+    font-size: 20px;
+    font-family: Montserrat;
+    font-weight: 600;
+    color: black;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid black;
+    box-shadow: 6px 6px 0px black;
+    transition: .4s;
+    z-index: 1;
+}
+
+.name::before {
+    color: black;
+    content: "Dark Mode";
+    margin-right: 2em;
+    transition: .2s ease-in-out;
+}
+
+.name::after {
+    color: black;
+    content: "Light Mode";
+    margin-right: 1.7em;
+    transition: .2s ease-in-out;
+    display: none;
+}
+
+.theme-switch .slider {
+    position: absolute;
+    background-color: #222;
+    margin-left: 6.2em;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 4px solid #222;
+    transform: rotate(-120deg);
+    box-shadow: inset 0px 6px #999, inset 0px 6px 1px 1px #999;
+    -moz-box-shadow: inset 0px 6px #999, inset 0px 6px 1px 1px #999;
+}
+
+.theme-switch:hover {
+    color: white;
+    cursor: pointer;
+    box-shadow: none;
+    transform: translateX(6px) translateY(6px);
+    background-color: black;
+    border: none;
+}
+
+.theme-switch:hover .name::before {
+    color: white;
+}
+
+.theme-switch:hover .name::after {
+    color: white;
+}
+
+.theme-switch input[type=checkbox]:checked + .slider {
+    transform: rotate(360deg);
+    box-shadow: none;
+    border: 4px solid #F28C38;
+    background-color: #F28C38;
+}
+
+.theme-switch input[type=checkbox]:checked ~ .name::before {
+    display: none;
+}
+
+.theme-switch input[type=checkbox]:checked ~ .name::after {
+    display: block;
+}
+
+.theme-switch input[type=checkbox] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.slider {
+    transition: 300ms ease;
+}
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
