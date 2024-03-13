@@ -96,6 +96,16 @@ document.onreadystatechange = function () {
                 }
             });
         });
+        document.querySelector('.switch-container input[type="checkbox"]').addEventListener('change', function() {
+            var lyceeText = document.getElementById('lycee');
+
+
+            if (this.checked) {
+                lyceeText.style.display = 'block';
+            } else {
+                lyceeText.style.display = 'none';
+            }
+        });
     }
 }
 
